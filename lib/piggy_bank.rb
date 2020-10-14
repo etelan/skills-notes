@@ -11,20 +11,34 @@ class PiggyBank
   attr_writer :coins
 
   def deposit(num)
-    if !(@broke) then @coins += num end
+    if !(@broke) then @coins += num else raise "no bank" end
   end
 
   def cling
     if !(@broke) then
-      print (if @coins > 0 then "cling" else "silence" end)
+      print (if !(empty?) then "cling" else "silence" end)
+    else
+      raise "no bank"
     end
   end
 
   def smash
     if !(@broke) then
-       msg = "You now have " + @coins.to_s + " amount of coins."
-       print msg
+       msg_printer
        @broke = true
-    end
+   else
+     raise "no bank"
+   end
   end
+
+  # Single Responsibility Making
+  private
+  def msg_printer
+    print "You now have " + @coins.to_s + " amount of coins."
+  end
+
+  def empty?
+    return (if @coins == 0 then true else false end)
+  end
+
 end

@@ -16,6 +16,17 @@ describe '#DEPOSIT' do
     # Check
     expect(actual_value).to eq expected_value
   end
+
+  it 'no bank, raise error' do
+
+    # Create
+    bank_of_england = PiggyBank.new
+    bank_of_england.smash
+
+    # Test the function
+    expect{bank_of_england.deposit(99)}.to raise_error("no bank")
+  end
+
 end
 
 describe '#CLING' do
@@ -44,9 +55,19 @@ describe '#CLING' do
     expect do
         bank_of_england.cling
     end.to output('silence').to_stdout
-
-
   end
+
+  it 'no bank, raise error' do
+
+    # Create
+    bank_of_england = PiggyBank.new
+    bank_of_england.smash
+
+    # Test the function
+    expect{bank_of_england.cling}.to raise_error("no bank")
+  end
+
+
 end
 
 describe '#SMASH' do
@@ -64,4 +85,17 @@ describe '#SMASH' do
         bank_of_england.smash
     end.to output("You now have " + amount + " amount of coins.").to_stdout
   end
+
+  it 'no bank, raise error' do
+
+    # Create
+    bank_of_england = PiggyBank.new
+    bank_of_england.smash
+
+    # Test the function
+    expect{bank_of_england.smash}.to raise_error("no bank")
+  end
+
+
+
 end
