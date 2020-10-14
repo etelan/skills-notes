@@ -1,6 +1,6 @@
 require 'piggy_bank'
 
-describe 'deposit' do
+describe '#DEPOSIT' do
   it 'put a coin in the bank, and the hidden coin balance goes up' do
 
     # Create
@@ -18,7 +18,7 @@ describe 'deposit' do
   end
 end
 
-describe 'cling' do
+describe '#CLING' do
   it 'make a cling if contains coins' do
 
     # Create
@@ -49,23 +49,19 @@ describe 'cling' do
   end
 end
 
-describe 'break' do
-  it 'break, print the coin score, delete the piggy bank' do
+describe '#SMASH' do
+  it 'print the coin score, break the bank' do
 
     # Create
     bank_of_england = PiggyBank.new
 
     # Function
     bank_of_england.deposit(1)
-
-
-    # Test Values
-    actual_value = bank_of_england.break
-    expected_value = "You now have " + bank_of_england.coins.to_s + " amount of coins."
+    amount = bank_of_england.coins.to_s
 
     # Test the function
     expect do
-        actual_value
-    end.to output(expected_value).to_stdout
+        bank_of_england.smash
+    end.to output("You now have " + amount + " amount of coins.").to_stdout
   end
 end

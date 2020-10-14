@@ -1,23 +1,30 @@
 class PiggyBank
 
-  attr_reader :coins
+  attr_reader :coins, :broke
 
   def initialize
     @coins = 0
+    @broke = false
   end
 
 
   attr_writer :coins
 
   def deposit(num)
-    @coins += num
+    if !(@broke) then @coins += num end
   end
 
   def cling
-    print (if @coins > 0 then "cling" else "silence" end)
+    if !(@broke) then
+      print (if @coins > 0 then "cling" else "silence" end)
+    end
   end
 
-  def break
+  def smash
+    if !(@broke) then
+       msg = "You now have " + @coins.to_s + " amount of coins."
+       print msg
+       @broke = true
+    end
   end
-
 end
