@@ -34,4 +34,17 @@ describe 'cling' do
 
 
   end
+
+  it 'no coins, no cling' do
+
+    # Create
+    bank_of_england = PiggyBank.new
+
+    # Test the function
+    expect do
+        bank_of_england.cling
+    end.to output('silence').to_stdout
+
+
+  end
 end
