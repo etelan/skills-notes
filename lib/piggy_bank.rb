@@ -8,9 +8,12 @@ class PiggyBank
 
 
   attr_writer :coins
-  
+
   def deposit(num)
     @coins += num
+  end
+
+  def cling
   end
 
 end

@@ -17,3 +17,21 @@ describe 'deposit' do
     expect(actual_value).to eq expected_value
   end
 end
+
+describe 'cling' do
+  it 'make a cling if contains coins' do
+
+    # Create
+    bank_of_england = PiggyBank.new
+
+    # Functions
+    bank_of_england.deposit(1)
+
+    # Test the function
+    expect do
+        bank_of_england.cling
+    end.to output('cling').to_stdout
+
+
+  end
+end
