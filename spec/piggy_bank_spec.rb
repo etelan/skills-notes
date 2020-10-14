@@ -48,3 +48,24 @@ describe 'cling' do
 
   end
 end
+
+describe 'break' do
+  it 'break, print the coin score, delete the piggy bank' do
+
+    # Create
+    bank_of_england = PiggyBank.new
+
+    # Function
+    bank_of_england.deposit(1)
+
+
+    # Test Values
+    actual_value = bank_of_england.break
+    expected_value = "You now have " + bank_of_england.coins.to_s + " amount of coins."
+
+    # Test the function
+    expect do
+        actual_value
+    end.to output(expected_value).to_stdout
+  end
+end

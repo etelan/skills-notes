@@ -17,4 +17,7 @@ class PiggyBank
     print (if @coins > 0 then "cling" else "silence" end)
   end
 
+  def break
+  end
+
 end
